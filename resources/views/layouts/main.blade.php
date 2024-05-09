@@ -1,10 +1,10 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!DOCTYPE html>
+<html lang="{{ str_replace("_", "-", app()->getLocale()) }}">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        @vite('resources/css/app.css')
-        <title>@yield('title')</title>
+        @vite("resources/css/app.css")
+        <title>@yield("title")</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -40,8 +40,20 @@
                 </ul>
             </nav>
         </header>
-        <main class="min-h-screen container mx-auto px-4">
-            @yield('content')
+        <main class="container mx-auto min-h-screen px-4">
+            @if (session("message"))
+                <div class="flex items-center justify-end">
+                    <div
+                        class="slide rounded bg-green-300 p-4 text-center shadow-sm"
+                    >
+                        <span class="text-sm font-medium text-green-800">
+                            Seu evento foi criado com sucesso!
+                        </span>
+                    </div>
+                </div>
+            @endif
+
+            @yield("content")
         </main>
         <footer class="container mx-auto px-4">
             <ul class="flex justify-end gap-4 p-4">
@@ -56,7 +68,13 @@
                 </li>
             </ul>
         </footer>
-        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+        <script
+            type="module"
+            src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+        ></script>
+        <script
+            nomodule
+            src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+        ></script>
     </body>
 </html>
