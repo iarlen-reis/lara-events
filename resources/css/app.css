@@ -5,4 +5,29 @@
 
 html {
     font-family: "Sora", sans-serif;
+    overflow-x: hidden;
 }
+
+.slide {
+    animation: slide 1s linear, bounce 1s 1s infinite;
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+      transform: translateY(0%);
+      animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+    50% {
+      transform: translateY(-25%);
+      animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+  }

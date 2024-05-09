@@ -5,13 +5,12 @@ export default {
         "./resources/**/*.js",
         "./resources/**/*.vue",
     ],
-  theme: {
-    extend: {
-        fontFamily: {
-            'sora': ['Sora', 'sans-serif'],
-        }
+    theme: {
+        extend: {
+            fontFamily: {
+                sora: ["Sora", "sans-serif"],
+            },
+        },
     },
-  },
-  plugins: [],
-}
-
+    plugins: [],
+};
