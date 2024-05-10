@@ -32,9 +32,9 @@
                         class="mx-auto flex w-full max-w-[400px] flex-col gap-2 rounded border border-white/40 pb-2 shadow-md"
                     >
                         <img
-                            src="/images/event.jpg"
+                            src="{{ $event->image }}"
                             alt="Imagem do evento"
-                            class="w-full rounded-tl rounded-tr"
+                            class="w-full rounded-tl rounded-tr h-[340px] object-fill"
                         />
                         <div class="flex flex-col gap-2 p-2">
                             <h3>
@@ -51,7 +51,7 @@
                                         size="small"
                                         name="location-outline"
                                     ></ion-icon>
-                                    Salvador, BA
+                                    {{ $event->city }}
                                 </li>
                                 <li class="flex items-center gap-2">
                                     <ion-icon
