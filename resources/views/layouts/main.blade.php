@@ -42,17 +42,14 @@
         </header>
         <main class="container mx-auto min-h-screen px-4">
             @if (session("message"))
-                <div class="flex items-center justify-end">
-                    <div
-                        class="slide rounded bg-green-300 p-4 text-center shadow-sm"
-                    >
-                        <span class="text-sm font-medium text-green-800">
+            <div class="flex items-center justify-end">
+                    <div class="slide rounded bg-green-300 p-4 text-center shadow-sm">
+                        <span class="text-sm text-green-800 font-medium">
                             Seu evento foi criado com sucesso!
                         </span>
                     </div>
                 </div>
             @endif
-
             @yield("content")
         </main>
         <footer class="container mx-auto px-4">
