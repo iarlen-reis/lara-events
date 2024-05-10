@@ -26,7 +26,8 @@ class EventController extends Controller
             'private' => $request->private,
             'description'=> $request->description,
             'image' => $uploadedFileUrl,
-            'items' => $request->items
+            'items' => $request->items,
+            'date' => $request->date,
         ]);
 
         return redirect('/')
