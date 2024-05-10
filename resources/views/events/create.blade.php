@@ -54,6 +54,67 @@
                 </select>
             </fieldset>
             <fieldset class="flex flex-col gap-2 text-sm">
+                <label for="description">Itens de infraestrutura</label>
+                <div
+                    class="grid grid-cols-3 gap-4 rounded border border-gray-500/20 p-4"
+                >
+                    <div class="flex items-center gap-2">
+                        <input
+                            type="checkbox"
+                            name="items[]"
+                            id="cadeiras"
+                            value="cadeiras"
+                        />
+                        <label class="text-sm capitalize" for="cadeiras">Cadeiras</label>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <input
+                            type="checkbox"
+                            name="items[]"
+                            id="mesas"
+                            value="mesas"
+                        />
+                        <label class="text-sm capitalize" for="mesas">Mesas</label>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <input
+                            type="checkbox"
+                            name="items[]"
+                            id="banheiros"
+                            value="banheiros"
+                        />
+                        <label class="text-sm capitalize" for="banheiros">banheiros</label>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <input
+                            type="checkbox"
+                            name="items[]"
+                            id="agua"
+                            value="agua"
+                        />
+                        <label class="text-sm capitalize" for="agua">Água</label>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <input
+                            type="checkbox"
+                            name="items[]"
+                            id="palco"
+                            value="palco"
+                        />
+                        <label class="text-sm capitalize" for="palco">Palco</label>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <input
+                            type="checkbox"
+                            name="items[]"
+                            id="open"
+                            value="open"
+                        />
+                        <label class="text-sm capitalize" for="open">Open bar</label>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="flex flex-col gap-2 text-sm">
                 <label for="description">Descrição do evento</label>
                 <textarea
                     id="description"
