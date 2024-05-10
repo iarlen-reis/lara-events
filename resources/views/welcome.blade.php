@@ -3,7 +3,7 @@
 
 @section("content")
     <section class="flex w-full flex-col gap-14 pb-12">
-        <div class="flex flex-col gap-4 mt-6">
+        <div class="mt-6 flex flex-col gap-4">
             <div
                 class="flex w-full items-center gap-2 self-end rounded border border-zinc-500/20 bg-transparent p-3 focus-within:border-blue-300 sm:max-w-[400px]"
             >
@@ -34,18 +34,21 @@
                         <img
                             src="{{ $event->image }}"
                             alt="Imagem do evento"
-                            class="w-full rounded-tl rounded-tr h-[340px] object-fill"
+                            class="h-[340px] w-full rounded-tl rounded-tr object-fill"
                         />
-                        <div class="flex flex-col gap-2 p-2">
-                            <h3>
-                                <a
-                                    href="/events/{{ $event->id }}"
-                                    class="text-2xl font-medium capitalize transition-colors hover:opacity-85"
-                                >
-                                    {{ $event->title }}
-                                </a>
-                            </h3>
-                            <ul class="flex flex-col gap-1">
+                        <div class="flex flex-col gap-4 p-2">
+                            <div class="flex flex-col">
+                                <h3>
+                                    <a
+                                        href="/events/{{ $event->id }}"
+                                        class="text-2xl font-medium capitalize transition-colors hover:opacity-85"
+                                    >
+                                        {{ $event->title }}
+                                    </a>
+                                </h3>
+                                <p class="text-sm text-zinc-400">{{ date('d M,  Y', strtotime($event->date)) }}</p>
+                            </div>
+                            <ul class="flex flex-col gap-2">
                                 <li class="flex items-center gap-2">
                                     <ion-icon
                                         size="small"
