@@ -4,28 +4,40 @@
 @section("content")
     <section class="flex w-full flex-col gap-14 pb-12">
         <div class="mt-6 flex flex-col gap-4">
-            <div
+            <form
+                action="/"
+                method="GET"
                 class="flex w-full items-center gap-2 self-end rounded border border-zinc-500/20 bg-transparent p-3 focus-within:border-blue-300 sm:max-w-[400px]"
             >
                 <ion-icon
-                    name="search-outline"
                     size="small"
+                    name="search-outline"
                     class="focus-visible::text-blue-500 text-zinc-500/80"
                 ></ion-icon>
                 <input
                     type="text"
+                    id="search"
+                    name="search"
                     placeholder="Pesquisar por evento..."
                     class="w-full bg-transparent outline-none focus-within:placeholder:text-blue-300"
                 />
-            </div>
-            <img
-                alt="banner"
-                src="/images/banner.jpg"
-                class="h-[400px] w-full rounded bg-cover"
-            />
+            </form>
+            @if (! $search)
+                <img
+                    alt="banner"
+                    src="/images/banner.jpg"
+                    class="h-[400px] w-full rounded bg-cover"
+                />
+            @endif
         </div>
         <div class="flex flex-col gap-6">
-            <h2 class="text-2xl">Próximos eventos</h2>
+            <h2 class="text-2xl">
+                @if ($search)
+                    Buscando por: {{ $search }}
+                @else
+                        Próximos eventos
+                @endif
+            </h2>
             <div class="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
                 @foreach ($events as $event)
                     <article
@@ -46,7 +58,9 @@
                                         {{ $event->title }}
                                     </a>
                                 </h3>
-                                <p class="text-sm text-zinc-400">{{ date('d M,  Y', strtotime($event->date)) }}</p>
+                                <p class="text-sm text-zinc-400">
+                                    {{ date("d M,  Y", strtotime($event->date)) }}
+                                </p>
                             </div>
                             <ul class="flex flex-col gap-2">
                                 <li class="flex items-center gap-2">
