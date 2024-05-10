@@ -32,6 +32,15 @@
                 />
             </fieldset>
             <fieldset class="flex flex-col gap-2 text-sm">
+                <label for="date">Data do evento</label>
+                <input
+                    id="date"
+                    type="date"
+                    name="date"
+                    class="rounded border border-gray-500/20 p-4"
+                />
+            </fieldset>
+            <fieldset class="flex flex-col gap-2 text-sm">
                 <label for="city">Local do evento</label>
                 <input
                     id="city"
