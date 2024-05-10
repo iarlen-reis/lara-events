@@ -26,9 +26,16 @@ class EventController extends Controller
             'private' => $request->private,
             'description'=> $request->description,
             'image' => $uploadedFileUrl,
+            'items' => $request->items
         ]);
 
         return redirect('/')
             ->with('message', 'Seu evento foi criado com sucesso!');
+    }
+
+    public function show($id) {
+        $event = Event::findOrFail($id);
+
+        return view('events.show', ['event' => $event]);
     }
 }
