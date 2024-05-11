@@ -16,7 +16,7 @@
                         class="flex items-center gap-2 text-sm capitalize text-zinc-400"
                     >
                         <ion-icon name="star-outline" size="small"></ion-icon>
-                        Iarlen Santos Reis
+                        {{ $event->user->name }}
                     </span>
                 </div>
                 <ul class="flex flex-col gap-2">
