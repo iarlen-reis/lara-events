@@ -1,5 +1,5 @@
 @extends("layouts.main")
-@section("title", $event->title)
+@section("title", "Lara Events | $event->title")
 
 @section("content")
     <div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 pb-12">

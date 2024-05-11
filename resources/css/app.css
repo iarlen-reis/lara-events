@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 
+[x-cloak] {
+    display: none;
+}
+
 html {
     font-family: "Sora", sans-serif;
     overflow-x: hidden;

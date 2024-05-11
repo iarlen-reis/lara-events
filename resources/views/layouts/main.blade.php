@@ -28,28 +28,45 @@
                     <li class="text-lg transition-opacity hover:opacity-80">
                         <a href="/">Eventos</a>
                     </li>
-                    <li class="text-lg transition-opacity hover:opacity-80">
-                        <a href="/events/create">Criar eventos</a>
-                    </li>
-                    <li class="text-lg transition-opacity hover:opacity-80">
-                        <a href="/">Entrar</a>
-                    </li>
-                    <li class="text-lg transition-opacity hover:opacity-80">
-                        <a href="/">Cadastrar</a>
-                    </li>
+                    @auth
+                        <li class="text-lg transition-opacity hover:opacity-80">
+                            <a href="/events/create">Criar eventos</a>
+                        </li>
+                        <li class="text-lg transition-opacity hover:opacity-80">
+                            <a href="/dashboard">Meus eventos</a>
+                        </li>
+                        <li class="text-lg transition-opacity hover:opacity-80">
+                            <form action="/logout" method="POST">
+                                @csrf
+                                <a href="/dashboard" onclick="event.preventDefault(); this.closest('form').submit()">Sair</a>
+                            </form>
+                        </li>
+                    @endauth
+
+                    @guest
+                        <li class="text-lg transition-opacity hover:opacity-80">
+                            <a href="/login">Entrar</a>
+                        </li>
+                        <li class="text-lg transition-opacity hover:opacity-80">
+                            <a href="/register">Cadastrar</a>
+                        </li>
+                    @endguest
                 </ul>
             </nav>
         </header>
         <main class="container mx-auto min-h-screen px-4">
             @if (session("message"))
-            <div class="flex items-center justify-end">
-                    <div class="slide rounded bg-green-300 p-4 text-center shadow-sm">
-                        <span class="text-sm text-green-800 font-medium">
+                <div class="flex items-center justify-end">
+                    <div
+                        class="slide rounded bg-green-300 p-4 text-center shadow-sm"
+                    >
+                        <span class="text-sm font-medium text-green-800">
                             Seu evento foi criado com sucesso!
                         </span>
                     </div>
                 </div>
             @endif
+
             @yield("content")
         </main>
         <footer class="container mx-auto px-4">

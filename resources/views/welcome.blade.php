@@ -19,7 +19,7 @@
                     id="search"
                     name="search"
                     placeholder="Pesquisar por evento..."
-                    class="w-full bg-transparent outline-none focus-within:placeholder:text-blue-300"
+                    class="w-full bg-transparent border-none outline-none focus:outline-none focus:border-none"
                 />
             </form>
             @if (! $search)
