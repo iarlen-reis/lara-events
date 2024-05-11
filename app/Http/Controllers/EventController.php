@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Event;
+use App\Models\User;
 
 class EventController extends Controller
 {
@@ -22,6 +23,7 @@ class EventController extends Controller
 
     public function store(Request $request) {
         $uploadedFileUrl = cloudinary()->upload($request->file('file')->getRealPath())->getSecurePath();
+        $user = auth()->user();
 
         Event::create([
             'city' => $request->city,
@@ -31,6 +33,7 @@ class EventController extends Controller
             'image' => $uploadedFileUrl,
             'items' => $request->items,
             'date' => $request->date,
+            'user_id'=> $user->id,
         ]);
 
         return redirect('/')
@@ -40,6 +43,25 @@ class EventController extends Controller
     public function show($id) {
         $event = Event::findOrFail($id);
 
-        return view('events.show', ['event' => $event]);
+        return view('events.show', [
+            'event' => $event,
+        ]);
+    }
+
+    public function dashboard() {
+        $user = auth()->user();
+
+        $events = $user->events;
+
+        return view('events.dashboard', [
+            'events'=> $events,
+        ]);
+    }
+
+    public function destroy($id) {
+        Event::findOrFail($id)->delete();
+
+        return redirect('/dashboard')
+            ->with('message', 'Evento foi excluído com sucesso!');
     }
 }
