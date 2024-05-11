@@ -7,20 +7,20 @@
             <form
                 action="/"
                 method="GET"
-                class="flex w-full items-center gap-2 self-end rounded border border-zinc-500/20 bg-transparent p-3 focus-within:border-blue-300 sm:max-w-[400px]"
+                class="flex w-fit items-center gap-2 self-end"
             >
-                <ion-icon
-                    size="small"
-                    name="search-outline"
-                    class="focus-visible::text-blue-500 text-zinc-500/80"
-                ></ion-icon>
                 <input
-                    type="text"
+                    type="search"
                     id="search"
                     name="search"
                     placeholder="Pesquisar por evento..."
-                    class="w-full bg-transparent border-none outline-none focus:outline-none focus:border-none"
+                    class="rounded border border-gray-500/20 p-2 px-4 placeholder:text-sm"
                 />
+                <button
+                    class="flex items-center justify-center rounded border border-gray-500/20 bg-transparent p-3 transition-all hover:bg-zinc-950/20"
+                >
+                    <ion-icon name="search-outline"></ion-icon>
+                </button>
             </form>
             @if (! $search)
                 <img
@@ -88,6 +88,26 @@
                     </article>
                 @endforeach
             </div>
+            @if (!$events->count() && $search)
+                <div class="flex flex-col gap-4 items-center justify-center">
+                    <h2 class="text-2xl text-center">Nenhum evento com o termo <br> <span class="font-bold">{{ $search }}</span> <br> foi encontrado.</h2>
+                    <a
+                    class="w-[240px] cursor-pointer rounded border border-zinc-400 bg-transparent p-4 text-center text-black transition-all hover:bg-zinc-950 hover:text-white"
+                    href="/events/create">
+                        Crie um evento
+                    </a>
+                </div>
+            @endif
+            @if (!$events->count() && !$search)
+                <div class="flex flex-col gap-4 items-center justify-center">
+                    <h2 class="text-2xl text-center">Nenhum evento foi encontrado.</h2>
+                    <a
+                    class="w-[240px] cursor-pointer rounded border border-zinc-400 bg-transparent p-4 text-center text-black transition-all hover:bg-zinc-950 hover:text-white"
+                    href="/events/create">
+                        Crie um evento
+                    </a>
+                </div>
+            @endif
         </div>
     </section>
 @endsection
