@@ -61,7 +61,7 @@
                         class="slide rounded bg-green-300 p-4 text-center shadow-sm"
                     >
                         <span class="text-sm font-medium text-green-800">
-                            Seu evento foi criado com sucesso!
+                            {{ session("message") }}
                         </span>
                     </div>
                 </div>
