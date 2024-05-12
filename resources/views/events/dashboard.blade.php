@@ -46,7 +46,7 @@
                                 </form>
                             </td>
                             <td>
-                                <a href="#">
+                                <a href="/events/edit/{{ $event->id }}">
                                     <ion-icon
                                         name="pencil-outline"
                                         class="size-6 rounded p-2 text-blue-500 hover:bg-zinc-950/20 transition-all"
