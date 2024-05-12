@@ -23,24 +23,28 @@
                 <tbody>
                     @foreach ($events as $event)
                         <tr>
-                            <td class="px-4 py-5 capitalize">
-                                {{ $event->title }}
+                            <td
+                                class="px-4 py-5 capitalize transition-all hover:opacity-85"
+                            >
+                                <a href="/events/{{ $event->id }}">
+                                    {{ $event->title }}
+                                </a>
                             </td>
                             <td>
                                 {{ date("d M, Y", strtotime($event->date)) }}
                             </td>
-                            <td>12</td>
+                            <td>{{ count($event->users) }}</td>
                             <td>
                                 <form
                                     action="/events/{{ $event->id }}"
                                     method="POST"
                                 >
                                     @csrf
-                                    @method('DELETE')
+                                    @method("DELETE")
                                     <button type="submit">
                                         <ion-icon
                                             name="trash-outline"
-                                            class="size-6 rounded p-2 text-red-500 hover:bg-zinc-950/20 transition-all"
+                                            class="size-6 rounded p-2 text-red-500 transition-all hover:bg-zinc-950/20"
                                         ></ion-icon>
                                     </button>
                                 </form>
@@ -49,10 +53,63 @@
                                 <a href="/events/edit/{{ $event->id }}">
                                     <ion-icon
                                         name="pencil-outline"
-                                        class="size-6 rounded p-2 text-blue-500 hover:bg-zinc-950/20 transition-all"
+                                        class="size-6 rounded p-2 text-blue-500 transition-all hover:bg-zinc-950/20"
                                     ></ion-icon>
                                 </a>
                             </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        @endif
+
+        @if (count($userEvents) > 0)
+            <div class="mt-6">
+                <h2 class="text-2xl">Eventos confirmados</h2>
+                <p class="text-lg text-zinc-400">
+                    Esses são os eventos que você confirmou sua presença.
+                </p>
+            </div>
+            <table class="w-full table-auto">
+                <thead class="rounded border border-gray-500/60">
+                    <tr>
+                        <th class="px-4 py-2 text-start">Nome do evento</th>
+                        <th class="py-2 text-start">Data do evento</th>
+                        <th class="py-2 text-start">Participantes</th>
+                        <th class="py-2 text-start">Sair</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($userEvents as $event)
+                        <tr>
+                            <td
+                                class="px-4 py-5 capitalize transition-all hover:opacity-85"
+                            >
+                                <a href="/events/{{ $event->id }}">
+                                    {{ $event->title }}
+                                </a>
+                            </td>
+                            <td>
+                                {{ date("d M, Y", strtotime($event->date)) }}
+                            </td>
+                            <td>{{ count($event->users) }}</td>
+                            @if ($event->date > now())
+                                <td>
+                                    <form
+                                        action="/events/leave/{{ $event->id }}"
+                                        method="POST"
+                                    >
+                                        @csrf
+                                        @method("DELETE")
+                                        <button type="submit">
+                                            <ion-icon
+                                                name="log-out-outline"
+                                                class="size-6 rounded p-2 text-red-500 transition-all hover:bg-zinc-950/20"
+                                            ></ion-icon>
+                                        </button>
+                                    </form>
+                                </td>
+                            @endif
                         </tr>
                     @endforeach
                 </tbody>
