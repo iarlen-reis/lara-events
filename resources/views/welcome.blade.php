@@ -75,7 +75,7 @@
                                         size="small"
                                         name="people-outline"
                                     ></ion-icon>
-                                    2 Participantes
+                                    {{ count($event->users) }} Participantes
                                 </li>
                             </ul>
                             <a
